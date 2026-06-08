@@ -68,12 +68,15 @@ export default function Contact() {
               gap: '1rem'
             }} className="contact-details-grid">
               
-              <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{
-                  color: 'var(--accent-color)',
+              <div className="glass-card contact-details-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div className="icon-wrapper" style={{
+                  color: 'var(--accent-dark)',
                   backgroundColor: 'var(--accent-glow)',
                   padding: '0.6rem',
-                  borderRadius: '10px'
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}><Phone size={20} /></div>
                 <div>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Llámanos</span>
@@ -81,12 +84,15 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{
-                  color: 'var(--accent-color)',
+              <div className="glass-card contact-details-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div className="icon-wrapper" style={{
+                  color: 'var(--accent-dark)',
                   backgroundColor: 'var(--accent-glow)',
                   padding: '0.6rem',
-                  borderRadius: '10px'
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}><Mail size={20} /></div>
                 <div>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Escríbenos</span>
@@ -94,174 +100,82 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{
-                  color: 'var(--accent-color)',
+              <div className="glass-card contact-details-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center', gridColumn: 'span 2' }}>
+                <div className="icon-wrapper" style={{
+                  color: 'var(--accent-dark)',
                   backgroundColor: 'var(--accent-glow)',
                   padding: '0.6rem',
-                  borderRadius: '10px'
-                }}><MapPin size={20} /></div>
-                <div>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Dirección</span>
-                  <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>C/ La Red Diecisiete, 53</span>
-                </div>
-              </div>
-
-              <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{
-                  color: 'var(--accent-color)',
-                  backgroundColor: 'var(--accent-glow)',
-                  padding: '0.6rem',
-                  borderRadius: '10px'
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}><Clock size={20} /></div>
                 <div>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Horario</span>
-                  <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>L-D: 08:00 - 24:00</span>
+                  <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>Lunes a Domingo: 08:00 - 24:00</span>
                 </div>
               </div>
 
             </div>
 
-            {/* Interactive Vector Map representation */}
-            <div className="glass-card" style={{
-              padding: '1.5rem',
-              height: '240px',
+            {/* Interactive Map Card */}
+            <div className="glass-card map-card" style={{
+              padding: '0',
+              height: '380px',
               position: 'relative',
               overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-              border: '1px solid var(--border-color)'
+              borderRadius: '24px',
+              border: '1px solid var(--border-color)',
+              boxShadow: '0 10px 30px rgba(15, 23, 42, 0.04)'
             }}>
-              {/* Map grid representation */}
+              <iframe
+                title="SoloPadel Sevilla Google Maps"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block' }}
+                src="https://maps.google.com/maps?q=37.371893832026686,-5.8922293306911&t=&z=16&ie=UTF8&iwloc=&hl=es&output=embed"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+
+              {/* Floating Glassmorphism Overlay Card */}
               <div style={{
                 position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                opacity: 0.15,
-                background: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-                backgroundSize: '20px 20px',
-                zIndex: 0
-              }}></div>
-
-              {/* Styled Mock Roads */}
-              <div style={{
-                position: 'absolute',
-                top: '40%',
-                left: '-10%',
-                width: '120%',
-                height: '24px',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                transform: 'rotate(-10deg)',
-                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: 0,
-                  width: '100%',
-                  borderTop: '1px dashed rgba(255, 255, 255, 0.2)',
-                  transform: 'translateY(-50%)'
-                }}></div>
-                <span style={{
-                  position: 'absolute',
-                  top: '-18px',
-                  left: '40px',
-                  fontSize: '0.6rem',
-                  color: 'var(--text-muted)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px'
-                }}>Autovía A-92 (Sevilla - Málaga)</span>
-              </div>
-
-              <div style={{
-                position: 'absolute',
-                top: '-10%',
-                left: '60%',
-                width: '28px',
-                height: '120%',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                transform: 'rotate(80deg)',
-                borderLeft: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRight: '1px solid rgba(255, 255, 255, 0.1)'
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  top: '30px',
-                  left: '32px',
-                  fontSize: '0.6rem',
-                  color: 'var(--text-muted)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  transform: 'rotate(-90deg)'
-                }}>Calle La Red Diecisiete</span>
-              </div>
-
-              {/* Pulsing Pin */}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '58%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 2,
-                cursor: 'pointer'
-              }}>
-                {/* Glowing ring */}
-                <div style={{
-                  position: 'absolute',
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--accent-glow-strong)',
-                  top: '-10px',
-                  left: '-10px',
-                  animation: 'pulseRing 2s infinite ease-out'
-                }}></div>
-                
-                {/* Real pin */}
-                <div style={{
-                  backgroundColor: 'var(--accent-color)',
-                  color: 'var(--bg-primary)',
-                  padding: '0.4rem',
-                  borderRadius: '50%',
-                  border: '2px solid #fff',
-                  boxShadow: '0 0 15px var(--accent-glow-strong)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative'
-                }}>
-                  <MapPin size={18} strokeWidth={2.5} />
-                </div>
-              </div>
-
-              {/* Map Footer Label */}
-              <div style={{
-                position: 'relative',
-                zIndex: 1,
-                backgroundColor: 'rgba(15, 19, 31, 0.9)',
-                padding: '0.75rem 1rem',
-                borderTop: '1px solid var(--border-color)',
+                bottom: '1.25rem',
+                left: '1.25rem',
+                right: '1.25rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.88)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                padding: '1rem 1.25rem',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderRadius: '12px'
-              }}>
-                <div>
-                  <strong style={{ fontSize: '0.85rem', display: 'block', color: '#fff' }}>SoloPadel Sevilla</strong>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Pol. Ind. La Red (Alcalá de Guadaíra)</span>
+                boxShadow: '0 8px 32px rgba(15, 23, 42, 0.08)',
+                zIndex: 10
+              }} className="map-overlay">
+                <div style={{ textAlign: 'left' }}>
+                  <strong style={{ fontSize: '0.9rem', display: 'block', color: 'var(--text-primary)' }}>SoloPadel Sevilla</strong>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Calle de la Red Diecisiete, 53, Alcalá de Guadaíra</span>
                 </div>
                 <a 
-                  href="https://maps.google.com/?q=Calle+La+Red+Diecisiete+53+Alcala+de+Guadaira" 
+                  href="https://www.google.com/maps/search/?api=1&query=37.371893832026686,-5.8922293306911" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="btn btn-primary btn-sm"
-                  style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem', borderRadius: '8px' }}
+                  className="btn btn-primary"
+                  style={{ 
+                    padding: '0.5rem 1rem', 
+                    fontSize: '0.8rem', 
+                    borderRadius: '8px',
+                    gap: '0.3rem',
+                    boxShadow: 'none'
+                  }}
                 >
-                  Abrir GPS
+                  <MapPin size={14} />
+                  Cómo llegar
                 </a>
               </div>
             </div>
@@ -273,7 +187,7 @@ export default function Contact() {
             
             {!formSubmitted ? (
               <form onSubmit={handleFormSubmit}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem', color: '#fff' }}>Envíanos un Mensaje</h3>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Envíanos un Mensaje</h3>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
                   ¿Tienes alguna pregunta? Envíanos tu consulta y te responderemos en menos de 24 horas.
                 </p>
@@ -340,7 +254,7 @@ export default function Contact() {
                 justifyContent: 'center'
               }}>
                 <div style={{
-                  color: 'var(--accent-color)',
+                  color: 'var(--accent-dark)',
                   backgroundColor: 'var(--accent-glow)',
                   padding: '1rem',
                   borderRadius: '50%',
@@ -380,15 +294,57 @@ export default function Contact() {
         .hover-link:hover {
           color: var(--accent-color) !important;
         }
+        .contact-details-card {
+          transition: all var(--transition-normal);
+        }
+        .contact-details-card:hover {
+          transform: translateY(-4px);
+          border-color: var(--border-active);
+          box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08), 0 0 20px var(--accent-glow);
+        }
+        .contact-details-card:hover .icon-wrapper {
+          background-color: var(--accent-glow-strong) !important;
+          transform: scale(1.08);
+        }
+        .icon-wrapper {
+          transition: all var(--transition-normal);
+        }
+        .map-card {
+          transition: all var(--transition-normal);
+        }
+        .map-card:hover {
+          border-color: var(--border-active);
+          box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08), 0 0 20px var(--accent-glow);
+        }
+        .map-overlay {
+          transition: all var(--transition-normal);
+        }
+        .map-card:hover .map-overlay {
+          transform: translateY(-2px);
+          border-color: var(--border-active);
+          box-shadow: 0 10px 35px rgba(15, 23, 42, 0.12);
+        }
         @media (max-width: 992px) {
           .contact-grid {
-            gridTemplateColumns: 1fr !important;
+            grid-template-columns: 1fr !important;
             gap: 3rem !important;
           }
         }
         @media (max-width: 576px) {
           .contact-details-grid {
-            gridTemplateColumns: 1fr !important;
+            grid-template-columns: 1fr !important;
+          }
+          .map-overlay {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+          }
+          .map-overlay a {
+            width: 100%;
+            text-align: center;
           }
         }
       `}</style>

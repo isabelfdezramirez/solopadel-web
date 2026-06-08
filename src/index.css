@@ -1,23 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Colors */
-  --bg-primary: #07090e;
-  --bg-secondary: #0f131f;
-  --bg-tertiary: #171d30;
-  --bg-card: rgba(15, 19, 31, 0.65);
+  /* Colors - Light Mode Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc; /* Slate 50 */
+  --bg-tertiary: #f1f5f9;  /* Slate 100 */
+  --bg-card: rgba(255, 255, 255, 0.85);
   
-  --accent-color: #a3e635; /* Electric Lime */
-  --accent-glow: rgba(163, 230, 53, 0.15);
-  --accent-glow-strong: rgba(163, 230, 53, 0.4);
-  --accent-dark: #65a30d;
+  --accent-color: #FA9600; /* Vibrant Padel Ball Orange-Yellow */
+  --accent-glow: rgba(250, 150, 0, 0.08);
+  --accent-glow-strong: rgba(250, 150, 0, 0.25);
+  --accent-dark: #d97706;  /* Darker Amber/Orange for text/buttons contrast */
   
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  /* Action Button Blue (from screenshots) */
+  --action-color: #0284c7; /* Sky Blue */
+  --action-glow: rgba(2, 132, 199, 0.08);
+  --action-glow-strong: rgba(2, 132, 199, 0.25);
+  --action-dark: #0369a1;  /* Darker Sky Blue */
+
+  --text-primary: #0f172a;   /* Slate 900 */
+  --text-secondary: #334155; /* Slate 700 */
+  --text-muted: #64748b;     /* Slate 500 */
   
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(163, 230, 53, 0.3);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --border-active: rgba(250, 150, 0, 0.35);
   
   /* Fonts */
   --font-heading: 'Outfit', sans-serif;
@@ -59,8 +65,8 @@ body {
   display: flex;
   flex-direction: column;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(163, 230, 53, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(163, 230, 53, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 10% 20%, rgba(250, 150, 0, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.02) 0%, transparent 50%),
     var(--bg-primary);
 }
 
@@ -121,37 +127,37 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  box-shadow: 0 4px 20px var(--accent-glow);
+  background-color: var(--action-color);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--action-glow);
 }
 
 .btn-primary:hover {
-  background-color: #bbf746;
+  background-color: var(--action-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow-strong);
+  box-shadow: 0 6px 20px var(--action-glow-strong);
 }
 
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  background-color: var(--action-color);
+  color: #ffffff;
+  opacity: 0.95;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--action-dark);
+  opacity: 1;
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--accent-color);
-  border: 1px solid var(--accent-color);
+  color: var(--action-color);
+  border: 1px solid var(--action-color);
 }
 
 .btn-outline:hover {
-  background: var(--accent-glow);
+  background: var(--action-glow);
   transform: translateY(-2px);
 }
 
@@ -164,11 +170,12 @@ a {
   border-radius: 24px;
   padding: 2.5rem;
   transition: all var(--transition-normal);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
 }
 
 .glass-card:hover {
   border-color: var(--border-active);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08), 0 0 20px var(--accent-glow);
 }
 
 /* Form Styles */
@@ -186,7 +193,7 @@ a {
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(15, 23, 42, 0.01);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 0.75rem 1rem;
@@ -198,9 +205,9 @@ a {
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--accent-color);
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-color: var(--action-color);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px var(--action-glow);
 }
 
 /* Badge */
@@ -214,7 +221,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background-color: var(--accent-glow);
-  color: var(--accent-color);
+  color: var(--accent-dark);
   border: 1px solid var(--border-active);
 }
 

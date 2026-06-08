@@ -1,30 +1,27 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrollY(window.scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'El Club', href: '#club' },
-    { name: 'Reservar', href: '#reservar' },
+    { name: 'Galería', href: '#inicio' },
     { name: 'Servicios', href: '#servicios' },
     { name: 'Eventos', href: '#eventos' },
+    { name: 'Tarifas', href: '#reservar' }, // Links to rates (which is inside reserves simulator)
+    { name: 'Reservas', href: '#reservar' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
@@ -46,6 +43,9 @@ export default function Navbar() {
     }
   };
 
+  const maxScroll = 100;
+  const progress = isOpen ? 1 : Math.min(scrollY / maxScroll, 1);
+
   return (
     <nav style={{
       position: 'fixed',
@@ -53,37 +53,50 @@ export default function Navbar() {
       left: 0,
       right: 0,
       height: 'var(--header-height)',
-      backgroundColor: scrolled ? 'rgba(7, 9, 14, 0.85)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(16px)' : 'none',
-      WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
+      backgroundColor: `rgba(255, 255, 255, ${progress * 0.95})`,
+      backdropFilter: `blur(${progress * 16}px)`,
+      WebkitBackdropFilter: `blur(${progress * 16}px)`,
+      borderBottom: `1px solid rgba(15, 23, 42, ${progress * 0.08})`,
+      boxShadow: `0 4px 20px -2px rgba(15, 23, 42, ${progress * 0.05})`,
       zIndex: 1000,
-      transition: 'all var(--transition-normal)'
+      transition: 'box-shadow var(--transition-normal), background-color var(--transition-fast)',
+      '--nav-text-color': `rgb(${Math.round(255 - progress * 240)}, ${Math.round(255 - progress * 232)}, ${Math.round(255 - progress * 213)})`
     }}>
+      {/* SVG filter definition to turn white parts to black progressively based on scroll progress, keeping yellow and red intact */}
+      <svg style={{ display: 'none' }}>
+        <defs>
+          <filter id="fade-white-to-black">
+            <feColorMatrix type="matrix" values={`
+              1  0  ${-progress}  0  0
+              0  1  ${-progress}  0  0
+              0  0  ${1 - progress}  0  0
+              0  0  0  1  0
+            `} />
+          </filter>
+        </defs>
+      </svg>
+
       <div className="container" style={{
         height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
-        {/* Logo */}
+        {/* Brand Logo */}
         <a href="#inicio" onClick={(e) => handleLinkClick(e, '#inicio')} style={{
-          fontFamily: 'var(--font-heading)',
-          fontSize: '1.6rem',
-          fontWeight: 800,
-          color: 'var(--text-primary)',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.25rem'
         }}>
-          SOLO<span style={{ color: 'var(--accent-color)' }}>PADEL</span>
-          <span style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            backgroundColor: 'var(--accent-color)',
-            display: 'inline-block'
-          }}></span>
+          <img
+            src={logoImg}
+            alt="SoloPadel Sevilla"
+            style={{
+              height: '48px',
+              width: 'auto',
+              display: 'block',
+              filter: 'url(#fade-white-to-black)'
+            }}
+          />
         </a>
 
         {/* Desktop Nav Links */}
@@ -97,14 +110,12 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
+              className="desktop-nav-link"
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontWeight: 500,
-                fontSize: '0.95rem',
-                color: 'var(--text-secondary)'
+                fontWeight: 600,
+                fontSize: '1rem',
               }}
-              onMouseEnter={(e) => e.target.style.color = 'var(--accent-color)'}
-              onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
             >
               {link.name}
             </a>
@@ -116,16 +127,17 @@ export default function Navbar() {
           <a
             href="#reservar"
             onClick={(e) => handleLinkClick(e, '#reservar')}
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary desktop-btn"
             style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              display: 'none'
+              padding: '0.6rem 1.25rem',
+              fontSize: '0.9rem',
+              borderRadius: '8px',
+              display: 'none',
+              gap: '0.4rem'
             }}
-            className="desktop-btn"
           >
-            <Calendar size={14} />
-            Reservar Pista
+            <Globe size={16} />
+            Reserva ahora
           </a>
 
           <button
@@ -133,11 +145,12 @@ export default function Navbar() {
             style={{
               background: 'transparent',
               border: 'none',
-              color: 'var(--text-primary)',
+              color: 'var(--nav-text-color)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              padding: '0.25rem'
+              padding: '0.25rem',
+              transition: 'color var(--transition-fast)'
             }}
             className="mobile-toggle"
           >
@@ -172,7 +185,7 @@ export default function Navbar() {
                 fontWeight: 600,
                 fontSize: '1.2rem',
                 color: 'var(--text-primary)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                borderBottom: '1px solid rgba(15, 23, 42, 0.05)',
                 paddingBottom: '0.5rem'
               }}
             >
@@ -183,16 +196,23 @@ export default function Navbar() {
             href="#reservar"
             onClick={(e) => handleLinkClick(e, '#reservar')}
             className="btn btn-primary"
-            style={{ width: '100%', marginTop: '1rem' }}
+            style={{ width: '100%', marginTop: '1rem', gap: '0.4rem' }}
           >
-            <Calendar size={16} />
-            Reservar Pista
+            <Globe size={18} />
+            Reserva ahora
           </a>
         </div>
       )}
 
-      {/* Embedded CSS for responsive toggles */}
+      {/* Embedded CSS for responsive toggles & transitions */}
       <style>{`
+        .desktop-nav-link {
+          color: var(--nav-text-color) !important;
+          transition: color var(--transition-fast) !important;
+        }
+        .desktop-nav-link:hover {
+          color: var(--accent-color) !important;
+        }
         @media (min-width: 769px) {
           .desktop-menu { display: flex !important; }
           .desktop-btn { display: inline-flex !important; }

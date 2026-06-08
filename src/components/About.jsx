@@ -1,94 +1,31 @@
-import { Shield, Coffee, ShoppingBag, ShowerHead } from 'lucide-react';
-import courtImage from '../assets/padel_court.png';
+import { Quote } from 'lucide-react';
+import terraceImg from '../assets/carrousel/img1.jpeg';
 
 export default function About() {
-  const facilities = [
-    {
-      icon: <Shield size={22} />,
-      title: '7 Pistas de Cristal',
-      desc: 'Cristal templado homologado y césped monofilamento que reduce el impacto en las articulaciones. Iluminación LED premium.'
-    },
-    {
-      icon: <Coffee size={22} />,
-      title: 'Cafetería y Terraza',
-      desc: 'Nuestra famosa terraza de verano para relajarte y tomar algo antes o después del partido. Ideal para eventos sociales.'
-    },
-    {
-      icon: <ShoppingBag size={22} />,
-      title: 'Tienda Especializada',
-      desc: 'Venta de material oficial, ropa de club y accesorios. También disponemos de servicio de alquiler de palas de test.'
-    },
-    {
-      icon: <ShowerHead size={22} />,
-      title: 'Vestuarios Completos',
-      desc: 'Instalaciones equipadas con duchas de agua caliente, taquillas de seguridad y climatización para tu total comodidad.'
-    }
-  ];
-
   return (
-    <section id="club" className="section" style={{ backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
+    <section id="club" className="section" style={{ backgroundColor: 'var(--bg-primary)', position: 'relative' }}>
       <div className="container">
         
-        {/* Section Header */}
-        <div className="section-header">
-          <span className="badge">Instalaciones</span>
-          <h2 style={{ marginTop: '0.5rem' }}>El Club SoloPadel</h2>
-          <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-            Ubicado estratégicamente en Alcalá de Guadaíra, ofrecemos un espacio diseñado al detalle para que tu experiencia deportiva sea inmejorable.
-          </p>
-        </div>
-
         {/* Content Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '4rem',
+          gridTemplateColumns: '1.1fr 0.9fr',
+          gap: '5rem',
           alignItems: 'center'
         }} className="about-grid">
           
-          {/* Facility Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {facilities.map((fac, idx) => (
-              <div key={idx} style={{
-                display: 'flex',
-                gap: '1.25rem',
-                alignItems: 'flex-start'
-              }}>
-                <div style={{
-                  backgroundColor: 'rgba(163, 230, 53, 0.1)',
-                  color: 'var(--accent-color)',
-                  padding: '0.75rem',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(163, 230, 53, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  {fac.icon}
-                </div>
-                <div style={{ textAlign: 'left' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>{fac.title}</h3>
-                  <p style={{ fontSize: '0.95rem', margin: 0, color: 'var(--text-secondary)' }}>{fac.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Visual Showcase */}
-          <div style={{ position: 'relative' }} className="about-image-wrapper">
-            {/* Background Glow */}
+          {/* Visual Showcase (Terrace Image & Quote Overlay) */}
+          <div style={{ position: 'relative', width: '100%' }} className="about-image-wrapper">
+            {/* Background Accent Glow behind image */}
             <div style={{
               position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '105%',
-              height: '105%',
+              top: '-15px',
+              left: '-15px',
+              width: '100%',
+              height: '100%',
               borderRadius: '24px',
-              background: 'linear-gradient(135deg, var(--accent-color) 0%, transparent 100%)',
+              border: '2px dashed var(--accent-color)',
               opacity: 0.15,
-              filter: 'blur(15px)',
               zIndex: 0
             }}></div>
             
@@ -96,40 +33,117 @@ export default function About() {
             <div style={{
               position: 'relative',
               borderRadius: '24px',
-              border: '1px solid var(--border-color)',
               overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)',
               zIndex: 1
             }}>
               <img 
-                src={courtImage} 
-                alt="Pista de Pádel de Cristal en SoloPadel" 
+                src={terraceImg} 
+                alt="Terraza y cafetería de SoloPadel Sevilla" 
                 style={{
                   width: '100%',
                   height: 'auto',
-                  display: 'block',
-                  transition: 'transform var(--transition-slow)'
+                  display: 'block'
                 }}
-                onMouseEnter={(e) => e.target.style.transform = 'scale(1.03)'}
-                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
               />
-              {/* Image Banner */}
+            </div>
+
+            {/* Overlapping Quote Box */}
+            <div className="glass-card" style={{
+              position: 'absolute',
+              bottom: '-3.5rem',
+              right: '-2rem',
+              maxWidth: '380px',
+              padding: '2rem',
+              borderRadius: '16px',
+              backgroundColor: '#f4f6f5', // light grey-beige as in screenshot
+              border: '1px solid rgba(15, 23, 42, 0.05)',
+              boxShadow: '0 15px 35px rgba(15, 23, 42, 0.06)',
+              zIndex: 2,
+              textAlign: 'left',
+              display: 'flex',
+              gap: '1.25rem',
+              alignItems: 'flex-start'
+            }} className="quote-box-mobile">
+              
+              {/* Quote Mark (Red) */}
               <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: '1.5rem',
-                background: 'linear-gradient(to top, rgba(7, 9, 14, 0.95), transparent)',
-                textAlign: 'left'
+                color: '#e53935', // Red color from screenshot
+                opacity: 0.9,
+                flexShrink: 0,
+                marginTop: '-0.25rem'
               }}>
-                <span className="badge" style={{ marginBottom: '0.5rem' }}>Pista Central</span>
-                <p style={{ color: '#ffffff', fontWeight: 600, fontSize: '1.05rem', margin: 0 }}>
-                  Iluminación LED optimizada y paredes de cristal templado de seguridad
+                <Quote size={36} fill="#e53935" />
+              </div>
+
+              <div>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  fontStyle: 'italic',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.5,
+                  marginBottom: '1rem'
+                }}>
+                  "El padel es más que un juego, es pasión, estrategia y diversión en cada punto."
                 </p>
+                <strong style={{
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px'
+                }}>
+                  Solo Padel Sevilla
+                </strong>
               </div>
             </div>
           </div>
+
+          {/* About Text Details */}
+          <div style={{ textAlign: 'left' }} className="about-text-column">
+            <span style={{
+              fontSize: '0.95rem',
+              fontWeight: 700,
+              color: 'var(--accent-color)', // Orange label
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              display: 'block',
+              marginBottom: '1rem'
+            }}>
+              Acerca de Solo Padel
+            </span>
+            
+            <h2 style={{
+              fontSize: '3rem',
+              fontWeight: 800,
+              color: 'var(--text-primary)',
+              lineHeight: 1.15,
+              marginBottom: '1.5rem',
+              fontFamily: 'var(--font-heading)'
+            }} className="about-title">
+              Tu club de padel en Sevilla
+            </h2>
+            
+            <p style={{
+              fontSize: '1.1rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              marginBottom: '1.25rem'
+            }}>
+              En <strong>Solo Padel Sevilla</strong>, somos mucho más que un club deportivo; somos el lugar donde el padel y el entretenimiento se unen para crear experiencias inolvidables.
+            </p>
+
+            <p style={{
+              fontSize: '1.1rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              marginBottom: '1rem'
+            }}>
+              Contamos con <strong>7 modernas pistas de cristal</strong>, bar cafetería y una gran terraza de verano, ideales para disfrutar del mejor ambiente.
+            </p>
+          </div>
+
         </div>
 
       </div>
@@ -138,12 +152,27 @@ export default function About() {
         @media (max-width: 992px) {
           .about-grid {
             gridTemplateColumns: 1fr !important;
-            gap: 3rem !important;
+            gap: 5rem !important;
+          }
+          .about-text-column {
+            order: 1 !important;
           }
           .about-image-wrapper {
+            order: 2 !important;
             max-width: 500px;
             margin: 0 auto;
-            width: 100%;
+          }
+          .quote-box-mobile {
+            position: relative !important;
+            bottom: 0 !important;
+            right: 0 !important;
+            margin-top: 1.5rem !important;
+            max-width: 100% !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .about-title {
+            font-size: 2.2rem !important;
           }
         }
       `}</style>

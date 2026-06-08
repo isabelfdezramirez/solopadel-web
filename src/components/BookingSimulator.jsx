@@ -79,7 +79,7 @@ export default function BookingSimulator() {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#a3e635', '#ffffff', '#171d30']
+      colors: ['#FA9600', '#ffffff', '#0f172a']
     });
   };
 
@@ -134,11 +134,11 @@ export default function BookingSimulator() {
                           borderRadius: '12px',
                           padding: '0.75rem 1rem',
                           cursor: 'pointer',
-                          backgroundColor: selectedCourt === court.id ? 'var(--accent-glow)' : 'rgba(255, 255, 255, 0.02)',
+                          backgroundColor: selectedCourt === court.id ? 'var(--accent-glow)' : 'rgba(15, 23, 42, 0.02)',
                           transition: 'all var(--transition-fast)'
                         }}
                       >
-                        <h4 style={{ fontSize: '0.95rem', color: selectedCourt === court.id ? 'var(--accent-color)' : '#fff', fontWeight: 600 }}>
+                        <h4 style={{ fontSize: '0.95rem', color: selectedCourt === court.id ? 'var(--accent-dark)' : 'var(--text-primary)', fontWeight: 600 }}>
                           {court.name}
                         </h4>
                         <p style={{ fontSize: '0.75rem', margin: 0, opacity: 0.8 }}>{court.desc}</p>
@@ -190,8 +190,8 @@ export default function BookingSimulator() {
                         type="button"
                         onClick={() => setSelectedTime(slot.time)}
                         style={{
-                          backgroundColor: selectedTime === slot.time ? 'var(--accent-color)' : 'rgba(255,255,255,0.03)',
-                          color: selectedTime === slot.time ? 'var(--bg-primary)' : 'var(--text-primary)',
+                          backgroundColor: selectedTime === slot.time ? 'var(--accent-color)' : 'rgba(15,23,42,0.03)',
+                          color: selectedTime === slot.time ? '#ffffff' : 'var(--text-primary)',
                           border: selectedTime === slot.time ? '1px solid var(--accent-color)' : '1px solid var(--border-color)',
                           borderRadius: '8px',
                           padding: '0.5rem 0.85rem',
@@ -208,7 +208,7 @@ export default function BookingSimulator() {
                         <span style={{
                           fontSize: '0.65rem',
                           opacity: 0.8,
-                          backgroundColor: selectedTime === slot.time ? 'rgba(7, 9, 14, 0.15)' : 'rgba(255, 255, 255, 0.08)',
+                          backgroundColor: selectedTime === slot.time ? 'rgba(255, 255, 255, 0.25)' : 'rgba(15, 23, 42, 0.05)',
                           padding: '0.1rem 0.3rem',
                           borderRadius: '4px'
                         }}>
@@ -239,7 +239,7 @@ export default function BookingSimulator() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      backgroundColor: 'rgba(255,255,255,0.01)'
+                      backgroundColor: 'rgba(15,23,42,0.01)'
                     }}>
                       <div>
                         <h4 style={{ fontSize: '0.875rem', fontWeight: 600 }}>Alquilar Palas</h4>
@@ -255,7 +255,7 @@ export default function BookingSimulator() {
                             borderRadius: '50%',
                             border: '1px solid var(--border-color)',
                             background: 'transparent',
-                            color: '#fff',
+                            color: 'var(--text-primary)',
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
@@ -273,7 +273,7 @@ export default function BookingSimulator() {
                             borderRadius: '50%',
                             border: '1px solid var(--border-color)',
                             background: 'transparent',
-                            color: '#fff',
+                            color: 'var(--text-primary)',
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
@@ -294,13 +294,13 @@ export default function BookingSimulator() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        backgroundColor: ballsTube ? 'var(--accent-glow)' : 'rgba(255,255,255,0.01)',
+                        backgroundColor: ballsTube ? 'var(--accent-glow)' : 'rgba(15,23,42,0.01)',
                         cursor: 'pointer',
                         transition: 'all var(--transition-fast)'
                       }}
                     >
                       <div>
-                        <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: ballsTube ? 'var(--accent-color)' : '#fff' }}>Bote de Bolas</h4>
+                        <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: ballsTube ? 'var(--accent-dark)' : 'var(--text-primary)' }}>Bote de Bolas</h4>
                         <p style={{ fontSize: '0.75rem', margin: 0, color: 'var(--text-muted)' }}>+4€ por bote</p>
                       </div>
                       <div style={{
@@ -314,7 +314,7 @@ export default function BookingSimulator() {
                         backgroundColor: ballsTube ? 'var(--accent-color)' : 'transparent',
                         borderColor: ballsTube ? 'var(--accent-color)' : 'var(--border-color)'
                       }}>
-                        {ballsTube && <Check size={14} color="#07090e" strokeWidth={3} />}
+                        {ballsTube && <Check size={14} color="#ffffff" strokeWidth={3} />}
                       </div>
                     </div>
 
@@ -333,7 +333,7 @@ export default function BookingSimulator() {
               }} className="calculator-sidebar">
                 
                 <div>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem', color: '#fff' }}>Resumen de la Reserva</h3>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Resumen de la Reserva</h3>
                   
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.9rem' }}>
                     
@@ -421,7 +421,7 @@ export default function BookingSimulator() {
                 margin: '0 auto 1.5rem',
                 boxShadow: '0 0 20px var(--accent-glow-strong)'
               }}>
-                <Check size={30} color="#07090e" strokeWidth={3} />
+                <Check size={30} color="#ffffff" strokeWidth={3} />
               </div>
 
               <h3 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.5rem' }}>¡Reserva Simulada con Éxito!</h3>
@@ -431,7 +431,7 @@ export default function BookingSimulator() {
 
               {/* Receipt info */}
               <div style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                backgroundColor: 'rgba(15, 23, 42, 0.02)',
                 border: '1px solid var(--border-color)',
                 borderRadius: '16px',
                 padding: '1.5rem',
@@ -444,7 +444,7 @@ export default function BookingSimulator() {
               }} className="receipt-grid">
                 <div>
                   <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.75rem', textTransform: 'uppercase' }}>Código Local</span>
-                  <strong style={{ fontSize: '1.1rem', color: 'var(--accent-color)' }}>{confirmedBooking.code}</strong>
+                  <strong style={{ fontSize: '1.1rem', color: 'var(--accent-dark)' }}>{confirmedBooking.code}</strong>
                 </div>
                 <div>
                   <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.75rem', textTransform: 'uppercase' }}>Pista Reservada</span>

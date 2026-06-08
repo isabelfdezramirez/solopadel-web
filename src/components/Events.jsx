@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Calendar, Users, Trophy, Award, CheckCircle, X } from 'lucide-react';
+import { Calendar, Users, Trophy, Award, CheckCircle, X, ArrowDown } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import trophiesImg from '../assets/carrousel/img3.jpeg';
 
 export default function Events() {
   const eventsData = [
@@ -61,22 +62,19 @@ export default function Events() {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
 
-    // Add to registered list
     setRegisteredList(prev => [...prev, {
       eventId: activeEvent.id,
       name: formData.name,
       time: new Date().toLocaleTimeString()
     }]);
 
-    // Show success confetti
     confetti({
       particleCount: 80,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#a3e635', '#ffffff']
+      colors: ['#FA9600', '#ffffff']
     });
 
-    // Reset and close
     handleCloseRegister();
   };
 
@@ -84,20 +82,123 @@ export default function Events() {
     return registeredList.some(reg => reg.eventId === eventId);
   };
 
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const target = document.querySelector(id);
+    if (target) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = target.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="eventos" className="section" style={{ backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
       <div className="container">
         
-        {/* Header */}
+        {/* Banner Section (Trophies Image & Competition Title - Matching Screenshot 3 Bottom) */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '0.9fr 1.1fr',
+          gap: '5rem',
+          alignItems: 'center',
+          marginBottom: '8rem'
+        }} className="events-banner-grid">
+          
+          {/* Left Side: Trophies Photo */}
+          <div style={{ position: 'relative' }} className="events-banner-image-wrapper">
+            <div style={{
+              position: 'absolute',
+              top: '15px',
+              right: '-15px',
+              width: '100%',
+              height: '100%',
+              borderRadius: '24px',
+              border: '2px dashed var(--accent-color)',
+              opacity: 0.15,
+              zIndex: 0
+            }}></div>
+            <div style={{
+              position: 'relative',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)',
+              zIndex: 1
+            }}>
+              <img 
+                src={trophiesImg} 
+                alt="Trofeos de Competición en SoloPadel Sevilla" 
+                style={{ width: '100%', height: 'auto', display: 'block' }} 
+              />
+            </div>
+          </div>
+
+          {/* Right Side: Text details */}
+          <div style={{ textAlign: 'left' }} className="events-banner-text-column">
+            <span style={{
+              fontSize: '0.95rem',
+              fontWeight: 700,
+              color: 'var(--accent-color)', // Orange label
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              display: 'block',
+              marginBottom: '1rem'
+            }}>
+              Compite y disfruta con nuestros torneos
+            </span>
+            
+            <h2 style={{
+              fontSize: '3rem',
+              fontWeight: 800,
+              color: 'var(--text-primary)',
+              lineHeight: 1.15,
+              marginBottom: '1.5rem',
+              fontFamily: 'var(--font-heading)'
+            }} className="events-banner-title">
+              Vive la emoción de la competición en Solo Padel Sevilla
+            </h2>
+            
+            <p style={{
+              fontSize: '1.1rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              marginBottom: '2rem'
+            }}>
+              Sumérgete en el mundo del padel y experimenta la adrenalina de cada punto en <strong>Solo Padel Sevilla</strong>. Nuestro club está diseñado para los amantes del deporte, organizando torneos express dinámicos, americanas por niveles los fines de semana y clinics técnicos con profesionales que te ayudarán a perfeccionar tu juego y táctica.
+            </p>
+
+            <button
+              onClick={(e) => scrollToSection(e, '#upcoming-events')}
+              className="btn btn-primary"
+              style={{ padding: '0.85rem 1.75rem', gap: '0.5rem', borderRadius: '8px' }}
+            >
+              Ver torneos activos
+              <ArrowDown size={16} />
+            </button>
+          </div>
+
+        </div>
+
+        {/* Anchor point for scrolling */}
+        <div id="upcoming-events" style={{ scrollMarginTop: '100px' }}></div>
+
+        {/* Section Header */}
         <div className="section-header">
           <span className="badge">Comunidad</span>
           <h2>Próximos Eventos y Actividades</h2>
           <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-            Únete a nuestras actividades grupales, compite en torneos exprés y vive el mejor ambiente social del pádel.
+            Únete a nuestras actividades grupales, regístrate en las americanas abiertas y vive la experiencia SoloPadel.
           </p>
         </div>
 
-        {/* Events Layout */}
+        {/* Events Layout Cards */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -118,16 +219,16 @@ export default function Events() {
               
               {/* Event Type Badge */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <span className="badge" style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: '#fff', borderColor: 'var(--border-color)' }}>
+                <span className="badge" style={{ backgroundColor: 'rgba(15,23,42,0.05)', color: 'var(--text-primary)', borderColor: 'var(--border-color)' }}>
                   {ev.type}
                 </span>
-                <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--accent-color)' }}>
+                <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--accent-dark)' }}>
                   {ev.price}
                 </span>
               </div>
 
               <div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>
                   {ev.title}
                 </h3>
                 
@@ -138,15 +239,15 @@ export default function Events() {
                 {/* Details list */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem', fontSize: '0.85rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)' }}>
-                    <Calendar size={16} style={{ color: 'var(--accent-color)' }} />
+                    <Calendar size={16} style={{ color: 'var(--accent-dark)' }} />
                     <span><strong>Fecha:</strong> {ev.date} ({ev.time})</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)' }}>
-                    <Users size={16} style={{ color: 'var(--accent-color)' }} />
+                    <Users size={16} style={{ color: 'var(--accent-dark)' }} />
                     <span><strong>Nivel:</strong> {ev.level}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)' }}>
-                    <Award size={16} style={{ color: 'var(--accent-color)' }} />
+                    <Award size={16} style={{ color: 'var(--accent-dark)' }} />
                     <span><strong>Plazas:</strong> {ev.spots}</span>
                   </div>
                 </div>
@@ -160,8 +261,8 @@ export default function Events() {
                   justifyContent: 'center',
                   gap: '0.5rem',
                   padding: '0.75rem',
-                  backgroundColor: 'rgba(163, 230, 53, 0.1)',
-                  color: 'var(--accent-color)',
+                  backgroundColor: 'var(--accent-glow)',
+                  color: 'var(--accent-dark)',
                   borderRadius: '12px',
                   border: '1px solid var(--border-active)',
                   fontWeight: 600,
@@ -192,7 +293,7 @@ export default function Events() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(7, 9, 14, 0.85)',
+            backgroundColor: 'rgba(15, 23, 42, 0.45)',
             backdropFilter: 'blur(8px)',
             zIndex: 2000,
             display: 'flex',
@@ -285,7 +386,7 @@ export default function Events() {
                 }}>
                   <div>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block' }}>A pagar en club</span>
-                    <strong style={{ fontSize: '1.25rem', color: 'var(--accent-color)' }}>{activeEvent.price}</strong>
+                    <strong style={{ fontSize: '1.25rem', color: 'var(--accent-dark)' }}>{activeEvent.price}</strong>
                   </div>
                   <button
                     type="submit"
@@ -302,6 +403,25 @@ export default function Events() {
         )}
 
       </div>
+
+      <style>{`
+        @media (max-width: 992px) {
+          .events-banner-grid {
+            gridTemplateColumns: 1fr !important;
+            gap: 3rem !important;
+          }
+          .events-banner-image-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+          }
+        }
+        @media (max-width: 768px) {
+          .events-banner-title {
+            font-size: 2.2rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
