@@ -64,7 +64,7 @@ export default function Footer() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.9rem' }}>
               <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="footer-link">Inicio</a>
               <a href="#club" onClick={(e) => handleScrollTo(e, '#club')} className="footer-link">El Club</a>
-              <a href="#contacto" onClick={(e) => handleScrollTo(e, '#contacto')} className="footer-link">Reservar</a>
+              <a href="#tarifas" onClick={(e) => handleScrollTo(e, '#tarifas')} className="footer-link">Tarifas</a>
               <a href="#servicios" onClick={(e) => handleScrollTo(e, '#servicios')} className="footer-link">Servicios</a>
               <a href="#comunidad" onClick={(e) => handleScrollTo(e, '#comunidad')} className="footer-link">Comunidad</a>
               <a href="#contacto" onClick={(e) => handleScrollTo(e, '#contacto')} className="footer-link">Contacto</a>

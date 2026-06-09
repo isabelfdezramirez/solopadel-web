@@ -17,8 +17,8 @@ export default function Hero() {
       title: 'Tu club 100% Padel en Sevilla',
       description: 'Disfruta de las mejores instalaciones y el mejor ambiente social en Alcalá de Guadaíra.',
       buttons: [
-        { text: 'Ver Galería', href: '#club', type: 'primary' },
-        { text: 'Reservar ahora', href: '#contacto', type: 'secondary' }
+        { text: 'Ver Tarifas', href: '#tarifas', type: 'primary' },
+        { text: 'Ver Galería', href: '#galeria', type: 'secondary' }
       ]
     },
     {
@@ -44,9 +44,7 @@ export default function Hero() {
       label: 'Escuela de Pádel',
       title: 'Nuestra Escuela de Pádel',
       description: 'Aprende y perfecciona tu técnica con clases de pádel para todos los niveles y edades impartidas por profesionales.',
-      buttons: [
-        { text: 'Ver Clases', href: '#servicios', type: 'primary' }
-      ]
+      buttons: []
     }
   ];
 
@@ -87,7 +85,7 @@ export default function Hero() {
 
   const stats = [
     { icon: <Award size={24} />, title: '7 Pistas', desc: 'Cristal exterior homologadas' },
-    { icon: <Clock size={24} />, title: '08:00 a 24:00', desc: 'Abierto 365 días al año' },
+    { icon: <Clock size={24} />, title: '07:30 a 01:30', desc: 'Abierto 365 días al año' },
     { icon: <Star size={24} />, title: 'Cafetería', desc: 'Gran terraza exterior con vistas' },
     { icon: <ShieldCheck size={24} />, title: 'Parking Gratis', desc: 'Privado y de fácil acceso' }
   ];
