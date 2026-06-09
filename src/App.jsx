@@ -1,9 +1,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import BookingSimulator from './components/BookingSimulator';
 import Services from './components/Services';
-import Events from './components/Events';
+import Community from './components/Community';
+import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -21,14 +21,14 @@ function App() {
         {/* Club Facilities details */}
         <About />
 
-        {/* Booking Interactive Simulator */}
-        <BookingSimulator />
-
         {/* Services Showcase */}
         <Services />
 
-        {/* Tournaments and community events */}
-        <Events />
+        {/* WhatsApp Playtomic community section */}
+        <Community />
+
+        {/* Photos Gallery */}
+        <Gallery />
 
         {/* Contact details, simulated map and contact form */}
         <Contact />

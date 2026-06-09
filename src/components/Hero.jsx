@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Phone, MessageSquare, ChevronLeft, ChevronRight, Award, Clock, Star, ShieldCheck } from 'lucide-react';
+import { Phone, MessageSquare, ChevronLeft, ChevronRight, Award, Clock, Star, ShieldCheck } from 'lucide-react';
 
 // Import carousel images
 import img1 from '../assets/carrousel/img1.jpeg';
 import img2 from '../assets/carrousel/img2.jpeg';
-import img3 from '../assets/carrousel/img3.jpeg';
 import img4 from '../assets/carrousel/img4.jpeg';
 import img5 from '../assets/carrousel/img5.jpeg';
 
@@ -19,42 +18,31 @@ export default function Hero() {
       description: 'Disfruta de las mejores instalaciones y el mejor ambiente social en Alcalá de Guadaíra.',
       buttons: [
         { text: 'Ver Galería', href: '#club', type: 'primary' },
-        { text: 'Reservar ahora', href: '#reservar', type: 'secondary' }
+        { text: 'Reservar ahora', href: '#contacto', type: 'secondary' }
       ]
     },
     {
       image: img2,
       label: 'Promotion',
       title: 'Reserva tu pista y vive el padel',
-      description: 'Disfruta de nuestras 7 modernas pistas de padel diseñadas para brindarte la mejor experiencia. No pierdas tiempo, reserva ahora de forma rápida y sencilla a través de nuestro sistema online, en el mismo club, o por teléfono y whatsapp en el 666467884.',
+      description: 'Disfruta de nuestras 7 modernas pistas de padel diseñadas para brindarte la mejor experiencia. No pierdas tiempo, reserva ahora de forma rápida y sencilla en el mismo club, o por teléfono y whatsapp en el 666467884.',
       buttons: [
-        { text: 'Hacer Reserva online', href: '#reservar', type: 'primary' },
+        { text: 'Reservar ahora', href: '#contacto', type: 'primary' },
         { text: 'Llamar', href: 'tel:+34666467884', type: 'secondary', icon: <Phone size={16} /> },
         { text: 'WhatsApp', href: 'https://wa.me/34666467884', type: 'secondary', icon: <MessageSquare size={16} /> }
-      ]
-    },
-    {
-      image: img3,
-      label: 'Torneos',
-      title: 'Vive la emoción de la competición',
-      description: 'Organizamos ligas, americanas y eventos de fin de semana para todos los niveles de juego con grandes premios.',
-      buttons: [
-        { text: 'Apuntarse a Torneo', href: '#eventos', type: 'primary' }
       ]
     },
     {
       image: img4,
       label: 'Tienda Oficial',
       title: 'Equípate con lo mejor',
-      description: 'Asesoramiento experto y venta de material deportivo oficial, palas de test de las mejores marcas y textil del club.',
-      buttons: [
-        { text: 'Ver Tienda', href: '#servicios', type: 'primary' }
-      ]
+      description: 'Somos distribuidores de la marca Drop Shot. Asesoramiento experto y venta de material deportivo oficial, palas de test de las mejores marcas y textil del club.',
+      buttons: []
     },
     {
       image: img5,
       label: 'Escuela de Pádel',
-      title: 'Escuela Luis Sanchez',
+      title: 'Nuestra Escuela de Pádel',
       description: 'Aprende y perfecciona tu técnica con clases de pádel para todos los niveles y edades impartidas por profesionales.',
       buttons: [
         { text: 'Ver Clases', href: '#servicios', type: 'primary' }
@@ -99,8 +87,8 @@ export default function Hero() {
 
   const stats = [
     { icon: <Award size={24} />, title: '7 Pistas', desc: 'Cristal exterior homologadas' },
-    { icon: <Clock size={24} />, title: '08:00 a 24:00', desc: 'Abierto todos los días' },
-    { icon: <Star size={24} />, title: 'Cafetería', desc: 'Gran terraza social de verano' },
+    { icon: <Clock size={24} />, title: '08:00 a 24:00', desc: 'Abierto 365 días al año' },
+    { icon: <Star size={24} />, title: 'Cafetería', desc: 'Gran terraza exterior con vistas' },
     { icon: <ShieldCheck size={24} />, title: 'Parking Gratis', desc: 'Privado y de fácil acceso' }
   ];
 
@@ -123,7 +111,7 @@ export default function Hero() {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.75) 35%, rgba(0, 0, 0, 0.3) 100%), url(${slide.image})`,
+              backgroundImage: `url(${slide.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: currentSlide === idx ? 1 : 0,
@@ -138,41 +126,50 @@ export default function Hero() {
             {currentSlide === idx && (
               <div className="container" style={{ textAlign: 'left', width: '100%' }}>
                 <div style={{
-                  maxWidth: '700px',
+                  width: '100%',
+                  maxWidth: '620px',
+                  backgroundColor: 'rgba(15, 23, 42, 0.25)', // More transparent card
+                  padding: '2.5rem',
+                  borderRadius: '24px',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.15)',
                   animation: 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-                }}>
+                }} className="hero-text-card">
                   {/* Category label */}
                   <span style={{
-                    fontSize: '1rem',
+                    fontSize: '0.95rem',
                     fontWeight: 700,
                     color: 'var(--accent-color)',
                     textTransform: 'uppercase',
                     letterSpacing: '2px',
                     display: 'block',
-                    marginBottom: '1rem'
+                    marginBottom: '0.75rem',
+                    textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
                   }}>
                     {slide.label}
                   </span>
                   
                   {/* Main Title */}
                   <h1 style={{
-                    fontSize: '3.6rem',
+                    fontSize: '3.2rem',
                     fontWeight: 800,
                     lineHeight: 1.15,
                     color: '#ffffff',
-                    marginBottom: '1.25rem',
-                    fontFamily: 'var(--font-heading)'
+                    marginBottom: '1rem',
+                    fontFamily: 'var(--font-heading)',
+                    textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)'
                   }} className="slide-title">
                     {slide.title}
                   </h1>
                   
                   {/* Description Paragraph */}
                   <p style={{
-                    fontSize: '1.15rem',
-                    color: 'rgba(255, 255, 255, 0.85)',
+                    fontSize: '1.1rem',
+                    color: 'rgba(255, 255, 255, 0.95)',
                     lineHeight: 1.6,
-                    marginBottom: '2.5rem',
-                    maxWidth: '600px'
+                    marginBottom: '2rem',
+                    maxWidth: '100%',
+                    textShadow: '0 1px 4px rgba(0, 0, 0, 0.5)'
                   }} className="slide-desc">
                     {slide.description}
                   </p>
@@ -303,34 +300,21 @@ export default function Hero() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '2rem'
+            gap: '1.5rem'
           }}>
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="glass-card"
-                style={{
-                  padding: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.25rem',
-                  textAlign: 'left'
-                }}
+                className="stat-card"
               >
-                <div style={{
-                  backgroundColor: 'var(--accent-glow)',
-                  padding: '0.75rem',
-                  borderRadius: '12px',
-                  color: 'var(--accent-dark)',
-                  border: '1px solid var(--border-active)'
-                }}>
+                <div className="stat-icon-wrapper">
                   {stat.icon}
                 </div>
                 <div>
-                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.15rem', color: 'var(--text-primary)' }}>
+                  <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.25rem', color: 'var(--text-primary)' }}>
                     {stat.title}
                   </h4>
-                  <p style={{ fontSize: '0.85rem', margin: 0, color: 'var(--text-secondary)' }}>
+                  <p style={{ fontSize: '0.85rem', margin: 0, color: 'var(--text-secondary)', fontWeight: 500, lineHeight: 1.4 }}>
                     {stat.desc}
                   </p>
                 </div>
@@ -340,7 +324,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Slide transition animations */}
+      {/* Slide transition animations & Stat Card styles */}
       <style>{`
         @keyframes fadeInUp {
           from {
@@ -352,15 +336,68 @@ export default function Hero() {
             transform: translateY(0);
           }
         }
+        
+        /* Premium Stat Card Styling */
+        .stat-card {
+          background: rgba(255, 255, 255, 0.7) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          border: 1px solid rgba(15, 23, 42, 0.05) !important;
+          border-radius: 20px !important;
+          padding: 1.5rem 1.25rem !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 1.25rem !important;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          box-shadow: 0 8px 30px rgba(15, 23, 42, 0.03) !important;
+          text-align: left !important;
+        }
+        
+        .stat-card:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.95) !important;
+          border-color: rgba(250, 150, 0, 0.35) !important;
+          box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08), 0 0 20px rgba(250, 150, 0, 0.05) !important;
+        }
+        
+        .stat-icon-wrapper {
+          background: linear-gradient(135deg, rgba(250, 150, 0, 0.06) 0%, rgba(250, 150, 0, 0.12) 100%);
+          color: var(--accent-dark);
+          border: 1px solid rgba(250, 150, 0, 0.2);
+          padding: 0.75rem;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .stat-card:hover .stat-icon-wrapper {
+          transform: scale(1.1) rotate(5deg);
+          background: linear-gradient(135deg, rgba(250, 150, 0, 0.12) 0%, rgba(250, 150, 0, 0.22) 100%);
+          border-color: rgba(250, 150, 0, 0.35);
+        }
+
         @media (max-width: 768px) {
+          .hero-text-card {
+            padding: 1.75rem 1.25rem !important;
+            border-radius: 16px !important;
+            margin: 0;
+            max-width: 100% !important;
+          }
           .slide-title {
-            font-size: 2.5rem !important;
+            font-size: 2.2rem !important;
           }
           .slide-desc {
-            font-size: 1rem !important;
+            font-size: 0.95rem !important;
+            margin-bottom: 1.5rem !important;
           }
           .carousel-arrow {
             display: none !important;
+          }
+          .stat-card {
+            padding: 1.25rem 1rem !important;
+            gap: 1rem !important;
           }
         }
       `}</style>

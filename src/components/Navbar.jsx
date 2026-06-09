@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo.jpg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,11 +17,9 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Galería', href: '#inicio' },
     { name: 'Servicios', href: '#servicios' },
-    { name: 'Eventos', href: '#eventos' },
-    { name: 'Tarifas', href: '#reservar' }, // Links to rates (which is inside reserves simulator)
-    { name: 'Reservas', href: '#reservar' },
+    { name: 'Comunidad', href: '#comunidad' },
+    { name: 'Galería', href: '#galeria' },
     { name: 'Contacto', href: '#contacto' },
   ];
 
@@ -62,20 +60,6 @@ export default function Navbar() {
       transition: 'box-shadow var(--transition-normal), background-color var(--transition-fast)',
       '--nav-text-color': `rgb(${Math.round(255 - progress * 240)}, ${Math.round(255 - progress * 232)}, ${Math.round(255 - progress * 213)})`
     }}>
-      {/* SVG filter definition to turn white parts to black progressively based on scroll progress, keeping yellow and red intact */}
-      <svg style={{ display: 'none' }}>
-        <defs>
-          <filter id="fade-white-to-black">
-            <feColorMatrix type="matrix" values={`
-              1  0  ${-progress}  0  0
-              0  1  ${-progress}  0  0
-              0  0  ${1 - progress}  0  0
-              0  0  0  1  0
-            `} />
-          </filter>
-        </defs>
-      </svg>
-
       <div className="container" style={{
         height: '100%',
         display: 'flex',
@@ -93,8 +77,7 @@ export default function Navbar() {
             style={{
               height: '48px',
               width: 'auto',
-              display: 'block',
-              filter: 'url(#fade-white-to-black)'
+              display: 'block'
             }}
           />
         </a>
@@ -125,8 +108,9 @@ export default function Navbar() {
         {/* Action Button & Menu Icon */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <a
-            href="#reservar"
-            onClick={(e) => handleLinkClick(e, '#reservar')}
+            href="https://playtomic.com/clubs/solo-padel-sevilla"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary desktop-btn"
             style={{
               padding: '0.6rem 1.25rem',
@@ -193,8 +177,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#reservar"
-            onClick={(e) => handleLinkClick(e, '#reservar')}
+            href="https://playtomic.com/clubs/solo-padel-sevilla"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary"
             style={{ width: '100%', marginTop: '1rem', gap: '0.4rem' }}
           >

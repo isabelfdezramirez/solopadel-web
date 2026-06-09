@@ -1,4 +1,5 @@
-import { Calendar, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import logoCompleto from '../assets/logo_completo.jpg';
 
 export default function Footer() {
   const handleScrollTo = (e, targetId) => {
@@ -37,23 +38,19 @@ export default function Footer() {
           {/* Brand Info */}
           <div>
             <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.8rem',
-              fontWeight: 800,
-              color: 'var(--text-primary)',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem',
-              marginBottom: '1rem'
+              marginBottom: '1.5rem'
             }}>
-              SOLO<span style={{ color: 'var(--accent-color)' }}>PADEL</span>
-              <span style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--accent-color)',
-                display: 'inline-block'
-              }}></span>
+              <img 
+                src={logoCompleto} 
+                alt="SoloPadel Sevilla" 
+                style={{ 
+                  height: '75px', 
+                  width: 'auto', 
+                  display: 'block' 
+                }} 
+              />
             </a>
             
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '320px' }}>
@@ -67,9 +64,9 @@ export default function Footer() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.9rem' }}>
               <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="footer-link">Inicio</a>
               <a href="#club" onClick={(e) => handleScrollTo(e, '#club')} className="footer-link">El Club</a>
-              <a href="#reservar" onClick={(e) => handleScrollTo(e, '#reservar')} className="footer-link">Reservar</a>
+              <a href="#contacto" onClick={(e) => handleScrollTo(e, '#contacto')} className="footer-link">Reservar</a>
               <a href="#servicios" onClick={(e) => handleScrollTo(e, '#servicios')} className="footer-link">Servicios</a>
-              <a href="#eventos" onClick={(e) => handleScrollTo(e, '#eventos')} className="footer-link">Eventos</a>
+              <a href="#comunidad" onClick={(e) => handleScrollTo(e, '#comunidad')} className="footer-link">Comunidad</a>
               <a href="#contacto" onClick={(e) => handleScrollTo(e, '#contacto')} className="footer-link">Contacto</a>
             </div>
           </div>

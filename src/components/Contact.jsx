@@ -63,8 +63,8 @@ export default function Contact() {
             
             {/* Direct Cards Info */}
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              display: 'flex',
+              flexDirection: 'column',
               gap: '1rem'
             }} className="contact-details-grid">
               
@@ -96,11 +96,11 @@ export default function Contact() {
                 }}><Mail size={20} /></div>
                 <div>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Escríbenos</span>
-                  <a href="mailto:solopadel@solopadelsevilla.es" style={{ fontWeight: 700, fontSize: '0.95rem', wordBreak: 'break-all' }} className="hover-link">solopadel@solopadelsevilla.es</a>
+                  <a href="mailto:solopadel@solopadelsevilla.es" style={{ fontWeight: 700, fontSize: '0.95rem' }} className="hover-link">solopadel@solopadelsevilla.es</a>
                 </div>
               </div>
 
-              <div className="glass-card contact-details-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center', gridColumn: 'span 2' }}>
+              <div className="glass-card contact-details-card" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <div className="icon-wrapper" style={{
                   color: 'var(--accent-dark)',
                   backgroundColor: 'var(--accent-glow)',

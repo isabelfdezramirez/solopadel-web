@@ -3,7 +3,7 @@ import alquilerImg from '../assets/alquiler-pistas_circle.jpg';
 import tournamentsImg from '../assets/tournaments.jpg';
 import storeImg from '../assets/store.jpg';
 import terraceImg from '../assets/terrace.jpg';
-import schoolLogo from '../assets/escuela_logo.jpg';
+import schoolLogo from '../assets/escuela_logo_real.jpg';
 import logo1x1 from '../assets/LogoSolopadel_1x1.png';
 
 export default function Services() {
@@ -29,7 +29,7 @@ export default function Services() {
       type: 'image',
       src: storeImg,
       title: 'Tienda',
-      desc: 'Asesoramiento y venta de material deportivo'
+      desc: 'Asesoramiento y venta de material deportivo Drop Shot.'
     },
     {
       type: 'image',
@@ -77,13 +77,7 @@ export default function Services() {
         </div>
 
         {/* Circular Cards Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '3.5rem 2rem',
-          justifyItems: 'center',
-          marginTop: '3.5rem'
-        }} className="services-circular-grid">
+        <div className="services-circular-grid">
           
           {servicesData.map((service, idx) => (
             <div
@@ -93,7 +87,8 @@ export default function Services() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                maxWidth: '280px'
+                maxWidth: '330px',
+                animationDelay: `${idx * 150}ms`
               }}
               className="service-circle-card"
             >
@@ -101,8 +96,8 @@ export default function Services() {
               {/* Circle Container */}
               <div 
                 style={{
-                  width: '210px',
-                  height: '210px',
+                  width: '310px',
+                  height: '310px',
                   borderRadius: '50%',
                   border: '6px solid #ffffff',
                   boxShadow: '0 12px 30px rgba(15, 23, 42, 0.08)',
@@ -111,7 +106,6 @@ export default function Services() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'all var(--transition-normal)',
                   cursor: 'pointer'
                 }}
                 className="service-circle"
@@ -123,8 +117,10 @@ export default function Services() {
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform var(--transition-normal)'
+                      objectFit: idx === 4 ? 'contain' : 'cover',
+                      transition: 'transform var(--transition-normal)',
+                      transform: idx === 4 ? 'scale(0.85)' : idx === 0 ? 'scale(1.38)' : 'scale(1.18)',
+                      backgroundColor: idx === 4 ? '#ffffff' : 'transparent'
                     }}
                     className="service-circle-img"
                   />
@@ -141,13 +137,13 @@ export default function Services() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    padding: '1.25rem',
+                    padding: '2rem',
                     fontFamily: 'var(--font-heading)'
                   }}>
-                    <strong style={{ fontSize: '0.85rem', letterSpacing: '1px', display: 'block', marginBottom: '0.2rem' }}>
+                    <strong style={{ fontSize: '1.15rem', letterSpacing: '1px', display: 'block', marginBottom: '0.25rem' }}>
                       GRUPOS
                     </strong>
-                    <strong style={{ fontSize: '0.85rem', letterSpacing: '1px', display: 'block', marginBottom: '0.4rem' }}>
+                    <strong style={{ fontSize: '1.15rem', letterSpacing: '1px', display: 'block', marginBottom: '0.5rem' }}>
                       WHATSAPP
                     </strong>
                     
@@ -156,19 +152,19 @@ export default function Services() {
                       src={logo1x1} 
                       alt="SoloPadel Logo" 
                       style={{ 
-                        height: '42px', 
-                        width: '42px', 
+                        height: '64px', 
+                        width: '64px', 
                         borderRadius: '50%', 
-                        marginBottom: '0.4rem',
+                        marginBottom: '0.5rem',
                         border: '1.5px solid #ffffff',
                         backgroundColor: '#ffffff'
                       }} 
                     />
 
-                    <span style={{ fontSize: '0.9rem', fontWeight: 700, display: 'block', marginBottom: '0.2rem' }}>
+                    <span style={{ fontSize: '1.15rem', fontWeight: 700, display: 'block', marginBottom: '0.25rem' }}>
                       ¿Te apuntas?
                     </span>
-                    <strong style={{ fontSize: '1.05rem', fontWeight: 800 }}>
+                    <strong style={{ fontSize: '1.35rem', fontWeight: 800 }}>
                       666467884
                     </strong>
                   </div>
@@ -206,13 +202,72 @@ export default function Services() {
       </div>
 
       <style>{`
+        /* Staggered rolling entrance animation */
+        @keyframes rollIn {
+          0% {
+            opacity: 0;
+            transform: translateX(-150px) rotate(-120deg);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg);
+          }
+        }
+        
+        .service-circle-card {
+          opacity: 0;
+          animation: rollIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        /* Grid Layout (3 columns on desktop) */
+        .services-circular-grid {
+          display: grid !important;
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 3.5rem 2rem !important;
+          justify-items: center !important;
+          margin-top: 3.5rem !important;
+          width: 100% !important;
+        }
+        
+        @media (max-width: 992px) {
+          .services-circular-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 3rem 1.5rem !important;
+          }
+        }
+        
+        @media (max-width: 650px) {
+          .services-circular-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem 1rem !important;
+          }
+        }
+
+        .service-circle {
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
         .service-circle:hover {
           transform: scale(1.05);
           border-color: var(--accent-color) !important;
-          box-shadow: 0 15px 35px rgba(250, 150, 0, 0.15) !important;
+          box-shadow: 0 15px 35px rgba(250, 150, 0, 0.2) !important;
         }
-        .service-circle:hover .service-circle-img {
-          transform: scale(1.08);
+        
+        /* Individual card hover zooms */
+        .service-circle-card:nth-child(1):hover .service-circle-img {
+          transform: scale(1.48) !important;
+        }
+        .service-circle-card:nth-child(3):hover .service-circle-img {
+          transform: scale(1.28) !important;
+        }
+        .service-circle-card:nth-child(4):hover .service-circle-img {
+          transform: scale(1.28) !important;
+        }
+        .service-circle-card:nth-child(5):hover .service-circle-img {
+          transform: scale(0.95) !important;
+        }
+        .service-circle-card:nth-child(6):hover .service-circle-img {
+          transform: scale(1.28) !important;
         }
       `}</style>
     </section>
