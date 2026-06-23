@@ -36,17 +36,26 @@ export default function Events() {
     <section id="eventos" className="section" style={{ backgroundColor: 'var(--bg-primary)', position: 'relative' }}>
       <div className="container">
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '4rem',
-          alignItems: 'center'
-        }} className="events-grid">
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '3rem',
+          maxWidth: '850px',
+          margin: '0 auto'
+        }} className="events-container">
           
-          {/* Left Column: Text & Features */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <span className="badge" style={{ alignSelf: 'flex-start' }}>Eventos</span>
+          {/* Text & Features block */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem',
+            textAlign: 'center',
+            width: '100%'
+          }} className="events-text-block">
+            <span className="badge">Eventos</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: '1.2' }}>Celebra tus Eventos con Nosotros</h2>
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '700px' }}>
               En <strong>Solo Padel</strong> puedes celebrar tus eventos (Primeras Comuniones, Cumpleaños, Torneos o reuniones con amigos) con un Torneo y luego disfrutar de una Bbq o Paella. <strong>¡Sería el combo perfecto!</strong>
             </p>
             
@@ -55,7 +64,9 @@ export default function Events() {
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '1.5rem',
-              margin: '1rem 0'
+              margin: '1.5rem 0',
+              textAlign: 'left',
+              width: '100%'
             }} className="events-features-grid">
               {features.map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
@@ -72,8 +83,8 @@ export default function Events() {
                     {item.icon}
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{item.title}</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{item.title}</h4>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
                       {item.desc}
                     </p>
                   </div>
@@ -81,8 +92,8 @@ export default function Events() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            {/* CTA Buttons */}
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5rem' }}>
               <a
                 href="https://wa.me/34666467884?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20para%20organizar%20un%20evento%20en%20Solo%20Padel."
                 target="_blank"
@@ -103,8 +114,8 @@ export default function Events() {
             </div>
           </div>
 
-          {/* Right Column: Image Poster */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {/* Image Poster centered below the text block */}
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <div 
               className="events-poster-wrapper"
               onClick={() => setLightboxOpen(true)}
@@ -115,7 +126,7 @@ export default function Events() {
                 boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)',
                 border: '1px solid var(--border-color)',
                 cursor: 'pointer',
-                maxWidth: '450px',
+                maxWidth: '650px',
                 width: '100%'
               }}
             >
@@ -238,9 +249,6 @@ export default function Events() {
           transform: translateY(0);
         }
         @media (max-width: 768px) {
-          .events-grid {
-            gap: 2.5rem !important;
-          }
           .events-features-grid {
             grid-template-columns: 1fr !important;
             gap: 1.25rem !important;
