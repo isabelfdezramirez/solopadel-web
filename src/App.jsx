@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Events from './components/Events';
 import Community from './components/Community';
 import Gallery from './components/Gallery';
 import Rates from './components/Rates';
@@ -24,6 +25,9 @@ function App() {
 
         {/* Services Showcase */}
         <Services />
+
+        {/* Events Section */}
+        <Events />
 
         {/* WhatsApp Playtomic community section */}
         <Community />
