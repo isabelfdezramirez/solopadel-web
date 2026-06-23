@@ -111,7 +111,7 @@ export default function About() {
               display: 'block',
               marginBottom: '1rem'
             }}>
-              Acerca de Solo Padel
+              Conoce nuestro club
             </span>
             
             <h2 style={{
