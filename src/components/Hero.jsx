@@ -36,7 +36,7 @@ export default function Hero() {
       {/* Hero Container */}
       <div style={{
         position: 'relative',
-        height: '500px',
+        height: '450px',
         backgroundColor: '#07090e',
         backgroundImage: `url(${img1})`,
         backgroundSize: 'cover',
