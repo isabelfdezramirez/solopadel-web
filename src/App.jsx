@@ -1,6 +1,5 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
 import Services from './components/Services';
 import Events from './components/Events';
 import Community from './components/Community';
@@ -29,8 +28,6 @@ function App() {
         {/* Events Section */}
         <Events />
 
-        {/* Club Facilities details */}
-        <About />
 
         {/* Photos Gallery */}
         <Gallery />

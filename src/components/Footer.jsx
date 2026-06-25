@@ -63,7 +63,7 @@ export default function Footer() {
             <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--text-primary)' }}>Enlaces Rápidos</h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', fontSize: '0.9rem' }}>
               <a href="#inicio" onClick={(e) => handleScrollTo(e, '#inicio')} className="footer-link">Inicio</a>
-              <a href="#club" onClick={(e) => handleScrollTo(e, '#club')} className="footer-link">El Club</a>
+              <a href="#eventos" onClick={(e) => handleScrollTo(e, '#eventos')} className="footer-link">Eventos</a>
               <a href="#tarifas" onClick={(e) => handleScrollTo(e, '#tarifas')} className="footer-link">Tarifas</a>
               <a href="#servicios" onClick={(e) => handleScrollTo(e, '#servicios')} className="footer-link">Servicios</a>
               <a href="#comunidad" onClick={(e) => handleScrollTo(e, '#comunidad')} className="footer-link">Comunidad</a>
