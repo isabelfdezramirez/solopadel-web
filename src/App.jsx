@@ -26,11 +26,11 @@ function App() {
         {/* Services Showcase */}
         <Services />
 
-        {/* Club Facilities details */}
-        <About />
-
         {/* Events Section */}
         <Events />
+
+        {/* Club Facilities details */}
+        <About />
 
         {/* Photos Gallery */}
         <Gallery />
