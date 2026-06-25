@@ -20,6 +20,9 @@ function App() {
         {/* Hero Banner & Stats */}
         <Hero />
 
+        {/* WhatsApp Playtomic community section */}
+        <Community />
+
         {/* Services Showcase */}
         <Services />
 
@@ -28,9 +31,6 @@ function App() {
 
         {/* Events Section */}
         <Events />
-
-        {/* WhatsApp Playtomic community section */}
-        <Community />
 
         {/* Photos Gallery */}
         <Gallery />
