@@ -36,11 +36,11 @@ export default function Hero() {
       {/* Hero Container */}
       <div style={{
         position: 'relative',
-        height: '550px',
+        height: '480px',
         backgroundColor: '#07090e',
         backgroundImage: `url(${img1})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'top center',
         display: 'flex',
         alignItems: 'center',
         zIndex: 1
@@ -49,7 +49,7 @@ export default function Hero() {
         <div className="container" style={{ textAlign: 'left', width: '100%' }}>
           <div style={{
             width: '100%',
-            maxWidth: '620px',
+            maxWidth: '850px',
             backgroundColor: 'rgba(15, 23, 42, 0.25)', // More transparent card
             padding: '2.5rem',
             borderRadius: '24px',
@@ -73,13 +73,14 @@ export default function Hero() {
             
             {/* Main Title */}
             <h1 style={{
-              fontSize: '3.2rem',
+              fontSize: '3rem',
               fontWeight: 800,
               lineHeight: 1.15,
               color: '#ffffff',
               marginBottom: '1rem',
               fontFamily: 'var(--font-heading)',
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)'
+              textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+              whiteSpace: 'nowrap'
             }} className="slide-title">
               Tu club 100% Padel en Sevilla
             </h1>
@@ -231,6 +232,7 @@ export default function Hero() {
           }
           .slide-title {
             font-size: 2.2rem !important;
+            white-space: normal !important;
           }
           .slide-desc {
             font-size: 0.95rem !important;
