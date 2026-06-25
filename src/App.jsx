@@ -22,6 +22,9 @@ function App() {
         {/* WhatsApp Playtomic community section */}
         <Community />
 
+        {/* Pricing Rates section */}
+        <Rates />
+
         {/* Services Showcase */}
         <Services />
 
@@ -31,9 +34,6 @@ function App() {
 
         {/* Photos Gallery */}
         <Gallery />
-
-        {/* Pricing Rates section */}
-        <Rates />
 
         {/* Contact details, simulated map and contact form */}
         <Contact />
