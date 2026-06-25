@@ -5,7 +5,6 @@ import { Phone, MessageSquare, ChevronLeft, ChevronRight, Award, Clock, Star, Sh
 import img1 from '../assets/carrousel/img1.jpeg';
 import img2 from '../assets/carrousel/img2.jpeg';
 import img4 from '../assets/carrousel/img4.jpeg';
-import img5 from '../assets/carrousel/img5.jpeg';
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,13 +36,6 @@ export default function Hero() {
       label: 'Tienda Oficial',
       title: 'Equípate con lo mejor',
       description: 'Somos distribuidores de la marca Drop Shot. Asesoramiento experto y venta de material deportivo oficial, palas de test de las mejores marcas y textil del club.',
-      buttons: []
-    },
-    {
-      image: img5,
-      label: 'Escuela de Pádel',
-      title: 'Nuestra Escuela de Pádel',
-      description: 'Aprende y perfecciona tu técnica con clases de pádel para todos los niveles y edades impartidas por profesionales.',
       buttons: []
     }
   ];
