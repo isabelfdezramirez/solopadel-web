@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Phone, MessageSquare, ChevronLeft, ChevronRight, Award, Clock, Star, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Award, Clock, Star, ShieldCheck } from 'lucide-react';
 
 // Import carousel images
 import img1 from '../assets/carrousel/img1.jpeg';
-import img2 from '../assets/carrousel/img2.jpeg';
 import img4 from '../assets/carrousel/img4.jpeg';
 
 export default function Hero() {
@@ -18,17 +17,6 @@ export default function Hero() {
       buttons: [
         { text: 'Ver Tarifas', href: '#tarifas', type: 'primary' },
         { text: 'Ver Galería', href: '#galeria', type: 'secondary' }
-      ]
-    },
-    {
-      image: img2,
-      label: 'Promotion',
-      title: 'Reserva tu pista y vive el padel',
-      description: 'Disfruta de nuestras 7 modernas pistas de padel diseñadas para brindarte la mejor experiencia. No pierdas tiempo, reserva ahora de forma rápida y sencilla en el mismo club, o por teléfono y whatsapp en el 666467884.',
-      buttons: [
-        { text: 'Reservar ahora', href: '#contacto', type: 'primary' },
-        { text: 'Llamar', href: 'tel:+34666467884', type: 'secondary', icon: <Phone size={16} /> },
-        { text: 'WhatsApp', href: 'https://wa.me/34666467884', type: 'secondary', icon: <MessageSquare size={16} /> }
       ]
     },
     {
