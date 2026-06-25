@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { ZoomIn, X, Clock, Sun, Moon, Sparkles, Calendar, Info } from 'lucide-react';
-import tarifasImg from '../assets/tarifas.png';
+import { Clock, Sun, Moon, Sparkles, Calendar, Info } from 'lucide-react';
 
 export default function Rates() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const rateCards = [
     {
@@ -135,27 +132,6 @@ export default function Rates() {
           ))}
         </div>
 
-        {/* View Original Flyer Button */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
-          <button
-            onClick={() => setLightboxOpen(true)}
-            className="btn btn-outline"
-            style={{
-              padding: '0.75rem 1.5rem',
-              borderRadius: '12px',
-              fontSize: '0.95rem',
-              gap: '0.5rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              backgroundColor: '#ffffff',
-              border: '1px solid rgba(15, 23, 42, 0.12)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.02)'
-            }}
-          >
-            <ZoomIn size={18} />
-            Ver Cartel de Tarifas Original
-          </button>
-        </div>
 
         {/* Additional Info Callouts */}
         <div style={{
@@ -209,65 +185,6 @@ export default function Rates() {
 
       </div>
 
-      {/* Lightbox Modal */}
-      {lightboxOpen && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(7, 9, 14, 0.95)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            zIndex: 3000,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '2rem',
-            animation: 'fadeIn var(--transition-fast) forwards'
-          }}
-          onClick={() => setLightboxOpen(false)}
-        >
-          <button 
-            style={{
-              position: 'absolute',
-              top: '1.5rem',
-              right: '1.5rem',
-              background: 'rgba(255,255,255,0.1)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '40px',
-              height: '40px',
-              color: '#ffffff',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 3100,
-              transition: 'background var(--transition-fast)'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
-          >
-            <X size={20} />
-          </button>
-
-          <img 
-            src={tarifasImg} 
-            alt="Tarifas Completo" 
-            style={{
-              maxWidth: '95%',
-              maxHeight: '90vh',
-              borderRadius: '12px',
-              boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-              objectFit: 'contain'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
 
       <style>{`
         .price-card {
