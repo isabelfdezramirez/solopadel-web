@@ -48,19 +48,16 @@ export default function Navbar() {
 
   return (
     <nav style={{
-      position: 'fixed',
+      position: 'sticky',
       top: 0,
       left: 0,
       right: 0,
       height: 'var(--header-height)',
-      backgroundColor: `rgba(255, 255, 255, ${progress * 0.95})`,
-      backdropFilter: `blur(${progress * 16}px)`,
-      WebkitBackdropFilter: `blur(${progress * 16}px)`,
-      borderBottom: `1px solid rgba(15, 23, 42, ${progress * 0.08})`,
-      boxShadow: `0 4px 20px -2px rgba(15, 23, 42, ${progress * 0.05})`,
+      backgroundColor: '#ffffff',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+      boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.05)',
       zIndex: 1000,
-      transition: 'box-shadow var(--transition-normal), background-color var(--transition-fast)',
-      '--nav-text-color': `rgb(${Math.round(255 - progress * 240)}, ${Math.round(255 - progress * 232)}, ${Math.round(255 - progress * 213)})`
+      '--nav-text-color': 'var(--text-primary)'
     }}>
       <div className="container" style={{
         height: '100%',
