@@ -16,7 +16,7 @@ export default function Rates() {
     {
       img: img2,
       title: 'LUNES-JUEVES',
-      subtitle: 'HASTA LAS 19:00 Y A PARTIR DE LAS 21:00',
+      subtitle: 'HASTA LAS 19:00 Y A PARTIR DE LAS 21:30',
       price: '4,50€'
     },
     {
@@ -28,7 +28,7 @@ export default function Rates() {
     {
       img: img4,
       title: 'LUNES-JUEVES',
-      subtitle: 'DE 19:00 A 21:00',
+      subtitle: 'DE 19:00 A 21:30',
       price: '5€'
     }
   ];

@@ -88,7 +88,7 @@ export default function Footer() {
 
               <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', color: 'var(--text-secondary)' }}>
                 <Mail size={18} style={{ color: 'var(--accent-color)', flexShrink: 0 }} />
-                <a href="mailto:solopadel@solopadelsevilla.es" className="footer-link">solopadel@solopadelsevilla.es</a>
+                <a href="mailto:solopadel@gmail.com" className="footer-link">solopadel@gmail.com</a>
               </div>
 
             </div>

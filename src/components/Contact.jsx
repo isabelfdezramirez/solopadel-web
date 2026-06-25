@@ -61,7 +61,7 @@ export default function Contact() {
                 }}><Mail size={20} /></div>
                 <div>
                   <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Escríbenos</span>
-                  <a href="mailto:solopadel@solopadelsevilla.es" style={{ fontWeight: 700, fontSize: '0.95rem' }} className="hover-link">solopadel@solopadelsevilla.es</a>
+                  <a href="mailto:solopadel@gmail.com" style={{ fontWeight: 700, fontSize: '0.95rem' }} className="hover-link">solopadel@gmail.com</a>
                 </div>
               </div>
 
