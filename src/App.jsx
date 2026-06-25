@@ -20,11 +20,11 @@ function App() {
         {/* Hero Banner & Stats */}
         <Hero />
 
-        {/* Club Facilities details */}
-        <About />
-
         {/* Services Showcase */}
         <Services />
+
+        {/* Club Facilities details */}
+        <About />
 
         {/* Events Section */}
         <Events />
