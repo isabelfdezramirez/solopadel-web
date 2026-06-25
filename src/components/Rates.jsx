@@ -1,9 +1,48 @@
 import { useState } from 'react';
-import { ZoomIn, X, Clock } from 'lucide-react';
+import { ZoomIn, X, Clock, Sun, Moon, Sparkles, Calendar, Info } from 'lucide-react';
 import tarifasImg from '../assets/tarifas.png';
 
 export default function Rates() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const rateCards = [
+    {
+      title: 'Lunes a Viernes (Mañanas)',
+      time: '9:00 a 14:00',
+      price: '3€',
+      icon: <Sun size={28} />,
+      iconColor: '#f59e0b',
+      iconBg: 'rgba(245, 158, 11, 0.1)',
+      desc: 'Comienza el día con la tarifa más económica de nuestro club.'
+    },
+    {
+      title: 'Lunes a Jueves (Tardes y Noches)',
+      time: 'Hasta las 19:00 y desde las 21:00',
+      price: '4,50€',
+      icon: <Moon size={28} />,
+      iconColor: '#6366f1',
+      iconBg: 'rgba(99, 102, 241, 0.1)',
+      desc: 'Ideal para jugar después del trabajo o en horario nocturno valle.'
+    },
+    {
+      title: 'Lunes a Jueves (Hora Punta)',
+      time: 'De 19:00 a 21:00',
+      price: '5€',
+      icon: <Sparkles size={28} />,
+      iconColor: 'var(--accent-color)',
+      iconBg: 'var(--accent-glow)',
+      desc: 'El horario de mayor actividad con el mejor ambiente en las pistas.'
+    },
+    {
+      title: 'Fines de Semana y Festivos',
+      time: 'Viernes tarde, Sábados, Domingos y Festivos',
+      price: '4,50€',
+      icon: <Calendar size={28} />,
+      iconColor: '#10b981',
+      iconBg: 'rgba(16, 185, 129, 0.1)',
+      desc: 'Disfruta de tu tiempo libre el fin de semana completo al mejor precio.'
+    }
+  ];
 
   return (
     <section id="tarifas" className="section" style={{ backgroundColor: 'var(--bg-secondary)', position: 'relative' }}>
@@ -18,86 +57,154 @@ export default function Rates() {
           </p>
         </div>
 
-        {/* Rates Poster Container */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-          <div 
-            className="rates-poster-wrapper"
-            onClick={() => setLightboxOpen(true)}
-            style={{
-              position: 'relative',
-              borderRadius: '24px',
-              overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(15, 23, 42, 0.06)',
-              border: '1px solid var(--border-color)',
-              cursor: 'pointer',
-              maxWidth: '1150px',
-              width: '100%',
-              backgroundColor: '#f8fbf9'
-            }}
-          >
-            <img 
-              src={tarifasImg} 
-              alt="Tarifas de Alquiler de Pistas SoloPadel" 
+        {/* Pricing Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
+          gap: '2rem',
+          marginTop: '3rem'
+        }} className="rates-grid">
+          {rateCards.map((card, idx) => (
+            <div
+              key={idx}
+              className="price-card"
               style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-              }}
-              className="rates-img"
-            />
-            
-            {/* Hover overlay with zoom icon */}
-            <div 
-              className="rates-overlay"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(15, 23, 42, 0.3)',
-                opacity: 0,
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--border-color)',
+                borderRadius: '24px',
+                padding: '2rem',
+                textAlign: 'left',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'opacity 0.3s ease',
-                zIndex: 2
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(15, 23, 42, 0.02)',
+                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             >
-              <div style={{
-                backgroundColor: '#ffffff',
-                padding: '1rem',
-                borderRadius: '50%',
-                color: 'var(--text-primary)',
-                boxShadow: '0 10px 20px rgba(0,0,0,0.15)',
-                transform: 'translateY(10px)',
-                transition: 'transform 0.3s ease'
-              }} className="zoom-btn">
-                <ZoomIn size={24} />
+              <div>
+                {/* Card top badge & icon */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                  <div style={{
+                    color: card.iconColor,
+                    backgroundColor: card.iconBg,
+                    padding: '0.75rem',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    {card.icon}
+                  </div>
+                  <div style={{
+                    fontSize: '2.25rem',
+                    fontWeight: 800,
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-heading)',
+                    display: 'flex',
+                    alignItems: 'baseline'
+                  }}>
+                    {card.price}
+                  </div>
+                </div>
+
+                {/* Title & Time */}
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)', lineHeight: 1.3 }}>
+                  {card.title}
+                </h4>
+                
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: 'var(--accent-dark)',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  marginBottom: '1rem'
+                }}>
+                  <Clock size={15} style={{ flexShrink: 0 }} />
+                  <span>{card.time}</span>
+                </div>
               </div>
+
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0, marginTop: '0.5rem' }}>
+                {card.desc}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Additional Info Callout */}
+        {/* View Original Flyer Button */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
+          <button
+            onClick={() => setLightboxOpen(true)}
+            className="btn btn-outline"
+            style={{
+              padding: '0.75rem 1.5rem',
+              borderRadius: '12px',
+              fontSize: '0.95rem',
+              gap: '0.5rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              backgroundColor: '#ffffff',
+              border: '1px solid rgba(15, 23, 42, 0.12)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.02)'
+            }}
+          >
+            <ZoomIn size={18} />
+            Ver Cartel de Tarifas Original
+          </button>
+        </div>
+
+        {/* Additional Info Callouts */}
         <div style={{
-          maxWidth: '1150px',
-          margin: '2.5rem auto 0',
-          backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-color)',
-          borderRadius: '16px',
-          padding: '1.25rem 1.5rem',
+          maxWidth: '1000px',
+          margin: '3rem auto 0',
           display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          fontSize: '0.95rem',
-          color: 'var(--text-secondary)'
+          flexDirection: 'column',
+          gap: '1rem'
         }}>
-          <Clock size={20} style={{ color: 'var(--accent-color)', flexShrink: 0 }} />
-          <span>
-            <strong>Nota de Reserva:</strong> Puedes realizar tus reservas cómodamente a través de la app de <strong>Playtomic</strong>, o de manera presencial, por teléfono y WhatsApp llamando al <strong>666 46 78 84</strong>.
-          </span>
+          {/* Main Cancellation policy */}
+          <div style={{
+            backgroundColor: 'rgba(250, 150, 0, 0.03)',
+            border: '1px solid rgba(250, 150, 0, 0.15)',
+            borderRadius: '16px',
+            padding: '1.25rem 1.5rem',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '1rem',
+            fontSize: '0.95rem',
+            color: 'var(--text-secondary)',
+            textAlign: 'left'
+          }}>
+            <Info size={20} style={{ color: 'var(--accent-color)', flexShrink: 0, marginTop: '0.15rem' }} />
+            <div>
+              <p style={{ margin: 0, fontWeight: 600, color: 'var(--text-primary)' }}>Política de Reservas y Cancelación</p>
+              <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                Cancelación con antelación mínima de <strong>24 horas</strong>. El club podrá modificar el número de pistas para evitar espacios libres entre reservas.
+              </p>
+            </div>
+          </div>
+
+          {/* Booking Info Callout */}
+          <div style={{
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '16px',
+            padding: '1.25rem 1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            fontSize: '0.95rem',
+            color: 'var(--text-secondary)',
+            textAlign: 'left'
+          }}>
+            <Clock size={20} style={{ color: 'var(--action-color)', flexShrink: 0 }} />
+            <span>
+              <strong>Cómo reservar:</strong> Puedes realizar tus reservas cómodamente a través de la app de <strong>Playtomic</strong>, o de manera presencial, por teléfono y WhatsApp llamando al <strong>666 46 78 84</strong>.
+            </span>
+          </div>
         </div>
 
       </div>
@@ -163,14 +270,13 @@ export default function Rates() {
       )}
 
       <style>{`
-        .rates-poster-wrapper:hover .rates-img {
-          transform: scale(1.02);
+        .price-card {
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
-        .rates-poster-wrapper:hover .rates-overlay {
-          opacity: 1;
-        }
-        .rates-poster-wrapper:hover .zoom-btn {
-          transform: translateY(0);
+        .price-card:hover {
+          transform: translateY(-5px);
+          border-color: var(--accent-color) !important;
+          box-shadow: 0 15px 35px rgba(250, 150, 0, 0.05), 0 0 20px rgba(250, 150, 0, 0.02) !important;
         }
       `}</style>
     </section>
