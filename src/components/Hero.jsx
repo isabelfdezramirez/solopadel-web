@@ -185,7 +185,7 @@ export default function Hero() {
               <img
                 src={playtomicLogo}
                 alt="Playtomic"
-                style={{ height: '24px', width: 'auto', display: 'block' }}
+                style={{ height: '34px', width: 'auto', display: 'block' }}
               />
             </a>
 
