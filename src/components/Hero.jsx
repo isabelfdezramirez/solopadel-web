@@ -36,11 +36,11 @@ export default function Hero() {
       {/* Hero Container */}
       <div style={{
         position: 'relative',
-        height: '480px',
+        height: '530px',
         backgroundColor: '#07090e',
         backgroundImage: `url(${img1})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'top center',
+        backgroundPosition: 'center',
         display: 'flex',
         alignItems: 'center',
         zIndex: 1

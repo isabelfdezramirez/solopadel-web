@@ -1,18 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import logoImg from '../assets/logo.jpg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -42,10 +33,6 @@ export default function Navbar() {
       });
     }
   };
-
-  const maxScroll = 100;
-  const progress = isOpen ? 1 : Math.min(scrollY / maxScroll, 1);
-
   return (
     <nav style={{
       position: 'sticky',
